@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ethicsbrain"
+version = "1.0.0"
+description = "Integrated AI safety control framework with guardrails, provenance, evidence verification, governed actions, benchmarks, and monitoring"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "EthicsBrain contributors"}]
+keywords = ["AI safety", "LLM guardrails", "AI ethics", "prompt injection", "responsible AI"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+nli = ["transformers>=4.45", "torch>=2.3"]
+
+[project.scripts]
+ethicsbrain-benchmark = "ethicsbrain.benchmark:main"
+ethicsbrain-verification-benchmark = "ethicsbrain.verification_benchmark:main"
+ethicsbrain-evidence = "ethicsbrain.provenance:main"
+ethicsbrain-policy = "ethicsbrain.policy_cli:main"
+ethicsbrain-audit-verify = "ethicsbrain.audit_cli:main"
+ethicsbrain-dashboard = "ethicsbrain.dashboard:main"
+ethicsbrain-retrieval-benchmark = "ethicsbrain.retrieval_benchmark:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.setuptools.package-data]
+ethicsbrain = ["py.typed", "datasets/*.jsonl", "datasets/*.json"]

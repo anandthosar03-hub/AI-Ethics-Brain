@@ -1,0 +1,109 @@
+{
+  "benchmark": "EthicsBrain synthetic retrieval benchmark",
+  "warning": "Synthetic AI safety/governance examples only. Retrieval scores do not measure truth, entailment, or real-world retrieval quality.",
+  "top_k": 3,
+  "documents": [
+    {
+      "source_id": "prompt-injection",
+      "title": "Prompt injection defense notes",
+      "publisher": "Example Security Team",
+      "uri": "https://example.org/prompt-injection-defense",
+      "text": "Prompt injection is untrusted content that attempts to override system instructions or make a model reveal secrets or misuse tools. Treat retrieved documents and user-provided text as data, not as higher-priority instructions."
+    },
+    {
+      "source_id": "action-authorization",
+      "title": "AI tool action authorization policy",
+      "publisher": "Example Platform Team",
+      "uri": "https://example.org/action-authorization",
+      "text": "Sensitive tool actions must be checked by an independent authorization layer outside the language model. Use an explicit allowlist, validate arguments, grant least privilege, and require human approval for high-impact actions."
+    },
+    {
+      "source_id": "audit-privacy",
+      "title": "Privacy-conscious audit logging",
+      "publisher": "Example Privacy Team",
+      "uri": "https://example.org/audit-privacy",
+      "text": "Privacy-conscious AI audit logs record timestamps, request identifiers, event types, policy decisions, and rule identifiers. Avoid storing raw prompts, responses, credentials, and unnecessary personal data by default. Hashes are not anonymization."
+    },
+    {
+      "source_id": "retrieval-provenance",
+      "title": "Evidence retrieval provenance",
+      "publisher": "Example Data Engineering Team",
+      "uri": "https://example.org/retrieval-provenance",
+      "text": "Retrieval provenance records source identity, title, publisher, supplied publication and retrieval dates, source URI, document hash, chunk hash, and character offsets so retrieved passages can be traced to ingested source versions."
+    },
+    {
+      "source_id": "nli-evaluation",
+      "title": "Natural language inference evaluation notes",
+      "publisher": "Example ML Evaluation Team",
+      "uri": "https://example.org/nli-evaluation",
+      "text": "Natural language inference models classify a premise and hypothesis as entailment, contradiction, or neutral. Their scores can be wrong and are not calibrated probabilities unless validated. Evidence relevance is not proof that a factual claim is supported."
+    },
+    {
+      "source_id": "secret-handling",
+      "title": "API credential handling policy",
+      "publisher": "Example Security Team",
+      "uri": "https://example.org/secret-handling",
+      "text": "API keys and gateway tokens should be stored in server-side environment variables or a managed secrets store. Never commit credentials to a source repository or expose provider keys in browser or mobile clients."
+    }
+  ],
+  "queries": [
+    {
+      "id": "q_prompt_injection",
+      "query": "How should a system handle untrusted text that tries to override instructions?",
+      "expected_source_ids": [
+        "prompt-injection"
+      ]
+    },
+    {
+      "id": "q_tool_permissions",
+      "query": "How can the system prevent an AI model from performing unauthorized sensitive actions?",
+      "expected_source_ids": [
+        "action-authorization"
+      ]
+    },
+    {
+      "id": "q_audit_privacy",
+      "query": "Which fields belong in privacy-conscious audit records and what should be excluded?",
+      "expected_source_ids": [
+        "audit-privacy"
+      ]
+    },
+    {
+      "id": "q_provenance",
+      "query": "How can a retrieved passage be traced to the exact source version and chunk?",
+      "expected_source_ids": [
+        "retrieval-provenance"
+      ]
+    },
+    {
+      "id": "q_nli",
+      "query": "What do entailment contradiction and neutral mean in a natural language inference model?",
+      "expected_source_ids": [
+        "nli-evaluation"
+      ]
+    },
+    {
+      "id": "q_secrets",
+      "query": "Where should API keys and gateway tokens be stored safely?",
+      "expected_source_ids": [
+        "secret-handling"
+      ]
+    },
+    {
+      "id": "q_hash_integrity",
+      "query": "Do document hashes prove that a document is true or authoritative?",
+      "expected_source_ids": [
+        "retrieval-provenance",
+        "nli-evaluation"
+      ]
+    },
+    {
+      "id": "q_bypass",
+      "query": "Why should model output not be the final authority for executing tools?",
+      "expected_source_ids": [
+        "action-authorization",
+        "prompt-injection"
+      ]
+    }
+  ]
+}

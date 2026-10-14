@@ -1,0 +1,7 @@
+cff-version: 1.2.0
+message: "Please cite this software when using EthicsBrain in research or a project."
+title: "EthicsBrain: AI Safety Governance, Evidence Provenance, and Monitoring"
+version: 1.0.0
+date-released: 2026-10-15
+license: MIT
+type: software

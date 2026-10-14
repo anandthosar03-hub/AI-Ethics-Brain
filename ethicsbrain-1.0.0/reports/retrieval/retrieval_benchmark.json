@@ -1,0 +1,146 @@
+{
+  "benchmark": "EthicsBrain retrieval provenance/ranking benchmark",
+  "dataset": "retrieval_cases.json",
+  "warning": "Synthetic AI safety/governance examples only. Retrieval scores do not measure truth, entailment, or real-world retrieval quality.",
+  "retrieval_method": "BM25-style lexical ranking",
+  "metrics": {
+    "queries": 8,
+    "top_k": 3,
+    "hit_rate_at_k": 1.0,
+    "mean_recall_at_k": 0.9375,
+    "mean_precision_at_k": 0.375,
+    "mean_reciprocal_rank": 1.0
+  },
+  "queries": [
+    {
+      "id": "q_prompt_injection",
+      "query": "How should a system handle untrusted text that tries to override instructions?",
+      "expected_source_ids": [
+        "prompt-injection"
+      ],
+      "retrieved_source_ids": [
+        "prompt-injection",
+        "secret-handling",
+        "nli-evaluation"
+      ],
+      "hit_at_k": true,
+      "recall_at_k": 1.0,
+      "precision_at_k": 0.3333,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "id": "q_tool_permissions",
+      "query": "How can the system prevent an AI model from performing unauthorized sensitive actions?",
+      "expected_source_ids": [
+        "action-authorization"
+      ],
+      "retrieved_source_ids": [
+        "action-authorization",
+        "prompt-injection",
+        "retrieval-provenance"
+      ],
+      "hit_at_k": true,
+      "recall_at_k": 1.0,
+      "precision_at_k": 0.3333,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "id": "q_audit_privacy",
+      "query": "Which fields belong in privacy-conscious audit records and what should be excluded?",
+      "expected_source_ids": [
+        "audit-privacy"
+      ],
+      "retrieved_source_ids": [
+        "audit-privacy",
+        "secret-handling",
+        "retrieval-provenance"
+      ],
+      "hit_at_k": true,
+      "recall_at_k": 1.0,
+      "precision_at_k": 0.3333,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "id": "q_provenance",
+      "query": "How can a retrieved passage be traced to the exact source version and chunk?",
+      "expected_source_ids": [
+        "retrieval-provenance"
+      ],
+      "retrieved_source_ids": [
+        "retrieval-provenance",
+        "secret-handling",
+        "prompt-injection"
+      ],
+      "hit_at_k": true,
+      "recall_at_k": 1.0,
+      "precision_at_k": 0.3333,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "id": "q_nli",
+      "query": "What do entailment contradiction and neutral mean in a natural language inference model?",
+      "expected_source_ids": [
+        "nli-evaluation"
+      ],
+      "retrieved_source_ids": [
+        "nli-evaluation",
+        "secret-handling",
+        "action-authorization"
+      ],
+      "hit_at_k": true,
+      "recall_at_k": 1.0,
+      "precision_at_k": 0.3333,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "id": "q_secrets",
+      "query": "Where should API keys and gateway tokens be stored safely?",
+      "expected_source_ids": [
+        "secret-handling"
+      ],
+      "retrieved_source_ids": [
+        "secret-handling",
+        "retrieval-provenance",
+        "nli-evaluation"
+      ],
+      "hit_at_k": true,
+      "recall_at_k": 1.0,
+      "precision_at_k": 0.3333,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "id": "q_hash_integrity",
+      "query": "Do document hashes prove that a document is true or authoritative?",
+      "expected_source_ids": [
+        "retrieval-provenance",
+        "nli-evaluation"
+      ],
+      "retrieved_source_ids": [
+        "nli-evaluation",
+        "prompt-injection",
+        "secret-handling"
+      ],
+      "hit_at_k": true,
+      "recall_at_k": 0.5,
+      "precision_at_k": 0.3333,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "id": "q_bypass",
+      "query": "Why should model output not be the final authority for executing tools?",
+      "expected_source_ids": [
+        "action-authorization",
+        "prompt-injection"
+      ],
+      "retrieved_source_ids": [
+        "action-authorization",
+        "prompt-injection",
+        "secret-handling"
+      ],
+      "hit_at_k": true,
+      "recall_at_k": 1.0,
+      "precision_at_k": 0.6667,
+      "reciprocal_rank": 1.0
+    }
+  ]
+}
